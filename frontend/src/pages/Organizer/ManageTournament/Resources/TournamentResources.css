@@ -1,0 +1,246 @@
+.resources-page {
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.resources-header,
+.resources-section-header,
+.resources-venue-top,
+.resources-courts-header,
+.resources-court-row,
+.resources-court-actions,
+.resources-add-court {
+  display: flex;
+  align-items: center;
+}
+
+.resources-header,
+.resources-section-header,
+.resources-venue-top,
+.resources-courts-header {
+  justify-content: space-between;
+}
+
+.resources-header {
+  margin-bottom: 28px;
+}
+
+.resources-back-link,
+.resources-fixtures-link {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.resources-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+  opacity: 0.65;
+}
+
+.resources-header h1,
+.resources-section h2,
+.resources-venue-card h3 {
+  margin: 0;
+}
+
+.resources-header p,
+.resources-venue-top p {
+  margin: 6px 0 0;
+  opacity: 0.7;
+}
+
+.resources-section {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  border-radius: 14px;
+}
+
+.resources-section-header {
+  margin-bottom: 20px;
+}
+
+.resources-count {
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.resources-form {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.resources-form label,
+.resources-add-court input {
+  display: block;
+}
+
+.resources-form label {
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.resources-form input,
+.resources-add-court input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  border-radius: 8px;
+  background: transparent;
+}
+
+.resources-form button,
+.resources-add-court button,
+.resources-court-actions button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.resources-message {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.resources-message.success {
+  border: 1px solid rgba(50, 160, 90, 0.35);
+}
+
+.resources-message.error {
+  border: 1px solid rgba(210, 70, 70, 0.4);
+}
+
+.resources-empty {
+  padding: 32px;
+  text-align: center;
+  border: 1px dashed rgba(128, 128, 128, 0.35);
+  border-radius: 10px;
+}
+
+.resources-empty h3 {
+  margin: 0 0 8px;
+}
+
+.resources-empty p,
+.resources-muted {
+  opacity: 0.7;
+}
+
+.resources-venue-list {
+  display: grid;
+  gap: 18px;
+}
+
+.resources-venue-card {
+  padding: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  border-radius: 12px;
+}
+
+.resources-stat {
+  min-width: 110px;
+  text-align: center;
+}
+
+.resources-stat strong {
+  display: block;
+  font-size: 26px;
+}
+
+.resources-stat span {
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.resources-courts {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(128, 128, 128, 0.18);
+}
+
+.resources-courts-header h4 {
+  margin: 0;
+}
+
+.resources-courts-header span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.resources-court-list {
+  margin-top: 12px;
+}
+
+.resources-court-row {
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.14);
+}
+
+.resources-court-row strong,
+.resources-court-row span {
+  display: block;
+}
+
+.resources-court-row span {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.resources-court-actions {
+  gap: 10px;
+}
+
+.resources-status {
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-size: 10px !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.resources-status.active {
+  border: 1px solid rgba(50, 160, 90, 0.35);
+}
+
+.resources-status.inactive {
+  border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.resources-add-court {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr 1fr auto;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@media (max-width: 800px) {
+  .resources-page {
+    padding: 20px;
+  }
+
+  .resources-form,
+  .resources-add-court {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-header,
+  .resources-venue-top,
+  .resources-court-row {
+    align-items: flex-start;
+    gap: 16px;
+    flex-direction: column;
+  }
+}

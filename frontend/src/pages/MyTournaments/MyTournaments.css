@@ -1,0 +1,352 @@
+/* ========================================
+   MY TOURNAMENTS
+======================================== */
+
+.my-tournaments-page {
+  min-height: 100vh;
+  padding: 50px 40px;
+  box-sizing: border-box;
+}
+
+.my-tournaments-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.my-tournaments-header {
+  margin-bottom: 36px;
+}
+
+.my-tournaments-header p {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  opacity: 0.4;
+}
+
+.my-tournaments-header h1 {
+  margin: 0 0 10px;
+  font-size: 38px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.my-tournaments-header span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+}
+
+/* ========================================
+   TABS
+======================================== */
+
+.tournament-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tournament-tabs button {
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tournament-tabs button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tournament-tabs button.active {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ========================================
+   TOURNAMENT LIST
+======================================== */
+
+.my-tournaments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ========================================
+   TOURNAMENT CARD
+======================================== */
+
+.my-tournament-card {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.4fr) minmax(180px, 0.8fr) auto;
+  align-items: center;
+  gap: 28px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.my-tournament-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+/* Tournament information */
+
+.my-tournament-card > div:first-child {
+  min-width: 0;
+}
+
+.my-tournament-card > div:first-child p {
+  margin: 0 0 7px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+.my-tournament-card > div:first-child h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.my-tournament-card > div:first-child span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
+
+/* Date + status */
+
+.my-tournament-card > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.my-tournament-card > div:nth-child(2) span:first-child {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.my-tournament-card > div:nth-child(2) span:last-child {
+  width: fit-content;
+  padding: 5px 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+/* Tournament link */
+
+.my-tournament-card > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.my-tournament-card > a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ========================================
+   EMPTY / LOADING / ERROR
+======================================== */
+
+.tournament-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 280px;
+  padding: 50px 30px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+
+  text-align: center;
+}
+
+.tournament-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  margin-bottom: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.tournament-empty p {
+  margin: 0 0 8px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  opacity: 0.4;
+}
+
+.tournament-empty h2 {
+  margin: 0 0 10px;
+
+  font-size: 23px;
+  letter-spacing: -0.02em;
+}
+
+.tournament-empty span {
+  max-width: 500px;
+  margin-bottom: 22px;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.tournament-empty a {
+  display: inline-flex;
+  padding: 11px 17px;
+
+  border-radius: 8px;
+
+  background: #fff;
+  color: #000;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tournament-empty a:hover {
+  opacity: 0.85;
+}
+
+/* ========================================
+   BACK BUTTON
+======================================== */
+
+.tournament-back {
+  display: inline-block;
+  margin-top: 28px;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  text-decoration: none;
+
+  font-size: 12px;
+}
+
+.tournament-back:hover {
+  color: #fff;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .my-tournament-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .my-tournament-card > a {
+    justify-self: start;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .my-tournaments-page {
+    padding: 30px 20px;
+  }
+
+  .my-tournaments-header h1 {
+    font-size: 30px;
+  }
+
+  .tournament-tabs {
+    margin-bottom: 22px;
+  }
+
+  .my-tournament-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .my-tournament-card > div:nth-child(2) {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .my-tournament-card > a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tournament-empty {
+    min-height: 240px;
+    padding: 40px 20px;
+  }
+}

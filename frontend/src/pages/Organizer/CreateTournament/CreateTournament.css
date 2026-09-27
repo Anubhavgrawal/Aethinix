@@ -1,0 +1,344 @@
+.create-tournament-page {
+  padding: 42px 44px 60px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.create-tournament-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+.create-tournament-eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: #d99a24;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.create-tournament-header h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.create-tournament-header p {
+  margin-top: 10px;
+  max-width: 620px;
+  color: #858585;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.create-back-button {
+  padding: 10px 15px;
+  border: 1px solid #303030;
+  border-radius: 8px;
+  background: #191919;
+  color: #aaa;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+.create-back-button:hover {
+  border-color: #444;
+  color: #fff;
+  background: #202020;
+}
+
+/* Sections */
+
+.create-tournament-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-section {
+  padding: 28px;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  background: #161616;
+}
+
+.form-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.form-section-heading > span {
+  min-width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  color: #d99a24;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.form-section-heading h2 {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.form-section-heading p {
+  margin-top: 5px;
+  color: #707070;
+  font-size: 11px;
+}
+
+/* Form */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: #aaa;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  border: 1px solid #303030;
+  border-radius: 8px;
+  outline: none;
+  background: #111;
+  color: #eee;
+  font-size: 13px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.form-field input,
+.form-field select {
+  height: 43px;
+  padding: 0 13px;
+}
+
+.form-field textarea {
+  padding: 12px 13px;
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #555;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: #a87520;
+  background: #141414;
+}
+
+.form-field select {
+  cursor: pointer;
+}
+
+.form-field small {
+  color: #5e5e5e;
+  font-size: 10px;
+}
+
+/* Categories */
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.category-card {
+  padding: 22px;
+  border: 1px solid #292929;
+  border-radius: 11px;
+  background: #121212;
+}
+
+.category-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.category-card-header span {
+  color: #777;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.category-card-header h3 {
+  margin-top: 5px;
+  color: #ddd;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.remove-category {
+  border: 0;
+  background: transparent;
+  color: #777;
+  font-size: 11px;
+}
+
+.remove-category:hover {
+  color: #d96b5c;
+}
+
+.add-category-button {
+  margin-top: 16px;
+  padding: 11px 15px;
+  border: 1px dashed #3a3a3a;
+  border-radius: 8px;
+  background: transparent;
+  color: #999;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+.add-category-button:hover {
+  border-color: #a87520;
+  color: #d99a24;
+  background: #191714;
+}
+
+/* Error */
+
+.create-form-error {
+  padding: 13px 15px;
+  border: 1px solid #5a302c;
+  border-radius: 8px;
+  background: #241614;
+  color: #db8b80;
+  font-size: 12px;
+}
+
+/* Actions */
+
+.create-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.cancel-button,
+.submit-tournament-button {
+  height: 43px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.cancel-button {
+  border: 1px solid #303030;
+  background: #181818;
+  color: #999;
+}
+
+.cancel-button:hover {
+  color: #fff;
+  background: #202020;
+}
+
+.submit-tournament-button {
+  border: 1px solid #d99a24;
+  background: #d99a24;
+  color: #111;
+}
+
+.submit-tournament-button:hover {
+  background: #e3a934;
+}
+
+.submit-tournament-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .create-tournament-page {
+    padding: 30px 22px 45px;
+  }
+
+  .create-tournament-header {
+    flex-direction: column;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-full {
+    grid-column: auto;
+  }
+
+  .form-section {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .create-tournament-page {
+    padding: 24px 15px 40px;
+  }
+
+  .create-tournament-header h1 {
+    font-size: 28px;
+  }
+
+  .form-section {
+    padding: 18px;
+  }
+
+  .category-card {
+    padding: 17px;
+  }
+
+  .create-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button,
+  .submit-tournament-button {
+    width: 100%;
+  }
+}

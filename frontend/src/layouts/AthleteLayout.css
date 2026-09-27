@@ -1,0 +1,523 @@
+/* =========================
+   ATHLETE PORTAL LAYOUT
+   Local tokens fall back to global index.css tokens if present
+========================= */
+
+.athlete-layout {
+  --al-bg: var(--color-bg, #0b0d10);
+  --al-surface: var(--color-surface, #14171b);
+  --al-surface-alt: var(--color-surface-alt, #1b1f24);
+  --al-border: var(--color-border, #262b31);
+  --al-border-strong: var(--color-border-strong, #33393f);
+  --al-text: var(--color-text, #f5f5f2);
+  --al-text-muted: var(--color-text-muted, #9aa0a6);
+  --al-text-faint: var(--color-text-faint, #5c6268);
+  --al-accent: var(--color-accent, #ffb020);
+  --al-accent-dim: var(--color-accent-dim, #b8801a);
+  --al-accent-contrast: var(--color-accent-contrast, #14171b);
+  --al-font-display: var(--font-display, "Oswald", sans-serif);
+  --al-font-body: var(--font-body, "Inter", sans-serif);
+  --al-font-mono: var(--font-mono, "JetBrains Mono", monospace);
+
+  min-height: 100vh;
+  display: flex;
+  background: var(--al-bg);
+  color: var(--al-text);
+  font-family: var(--al-font-body);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.athlete-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 264px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px 18px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+  background:
+    radial-gradient(140% 55% at 0% 0%, rgba(255, 176, 32, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, transparent 12%),
+    var(--al-bg);
+
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+}
+
+.athlete-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
+.athlete-logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--al-border-strong);
+  border-radius: 7px;
+
+  background: linear-gradient(160deg, rgba(255, 176, 32, 0.18), rgba(255, 176, 32, 0.02));
+  color: var(--al-accent);
+
+  font-family: var(--al-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.athlete-logo-word {
+  color: var(--al-text);
+  font-family: var(--al-font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Profile card */
+
+.athlete-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 13px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.athlete-avatar {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 176, 32, 0.35);
+
+  background: linear-gradient(160deg, rgba(255, 176, 32, 0.22), rgba(255, 176, 32, 0.04));
+  color: var(--al-accent);
+
+  font-family: var(--al-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.athlete-profile-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.athlete-profile-badge {
+  display: inline-flex;
+  width: fit-content;
+
+  color: var(--al-text-faint);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.athlete-profile-info strong {
+  display: block;
+
+  overflow: hidden;
+  color: #ececee;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.athlete-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-top: 32px;
+}
+
+.athlete-nav a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 48px;
+  padding: 12px 18px;
+
+  border: 1px solid transparent;
+  border-left: 2px solid transparent;
+  border-radius: 9px;
+
+  color: var(--al-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  transition:
+    color var(--duration-fast, 150ms) ease,
+    background var(--duration-fast, 150ms) ease,
+    border-color var(--duration-fast, 150ms) ease,
+    padding-left var(--duration-fast, 150ms) ease;
+}
+
+.athlete-nav a:hover {
+  color: var(--al-text);
+  background: rgba(255, 255, 255, 0.04);
+  padding-left: 21px;
+}
+
+.athlete-nav a.active {
+  color: var(--al-text);
+  background: linear-gradient(90deg, rgba(255, 176, 32, 0.12), rgba(255, 176, 32, 0.02));
+  border-left-color: var(--al-accent);
+  font-weight: 600;
+}
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.athlete-sidebar-bottom {
+  margin-top: auto;
+  padding-top: 22px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.athlete-sidebar-bottom a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 46px;
+  padding: 12px 18px;
+
+  border: 1px solid transparent;
+  border-left: 2px solid transparent;
+  border-radius: 9px;
+
+  color: var(--al-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  transition:
+    color var(--duration-fast, 150ms) ease,
+    background var(--duration-fast, 150ms) ease,
+    padding-left var(--duration-fast, 150ms) ease;
+}
+
+.athlete-sidebar-bottom a:hover {
+  color: var(--al-text);
+  background: rgba(255, 255, 255, 0.04);
+  padding-left: 21px;
+}
+
+.athlete-sidebar-bottom button {
+  width: 100%;
+  min-height: 46px;
+
+  padding: 12px 18px;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background: transparent;
+  color: var(--al-text-faint);
+
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.4;
+
+  transition:
+    color var(--duration-fast, 150ms) ease,
+    background var(--duration-fast, 150ms) ease;
+}
+
+.athlete-sidebar-bottom button:hover {
+  color: #ff8a8a;
+  background: rgba(229, 72, 77, 0.08);
+}
+
+/* =========================
+   MAIN AREA
+========================= */
+
+.athlete-main {
+  width: calc(100% - 264px);
+  min-height: 100vh;
+  margin-left: 264px;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.athlete-topbar {
+  position: sticky;
+  top: 0;
+
+  height: 68px;
+  padding: 0 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--al-border);
+
+  background: rgba(11, 13, 16, 0.86);
+  backdrop-filter: blur(14px);
+
+  z-index: 90;
+}
+
+.athlete-topbar-spacer {
+  flex: 1;
+}
+
+/* =========================
+   EXPLORE MENU
+========================= */
+
+.athlete-more {
+  position: relative;
+}
+
+.athlete-more > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 9px 14px;
+
+  border: 1px solid var(--al-border-strong);
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.03);
+  color: #d5d5da;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  transition:
+    background var(--duration-fast, 150ms) ease,
+    border-color var(--duration-fast, 150ms) ease;
+}
+
+.athlete-more-caret {
+  color: var(--al-text-faint);
+  font-size: 10px;
+}
+
+.athlete-more > button:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--al-accent-dim);
+}
+
+.athlete-more-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 216px;
+  padding: 8px;
+
+  border: 1px solid var(--al-border-strong);
+  border-radius: 10px;
+
+  background: #17191d;
+
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+
+  transition:
+    opacity var(--duration-standard, 200ms) ease,
+    visibility var(--duration-standard, 200ms) ease,
+    transform var(--duration-standard, 200ms) ease;
+}
+
+.athlete-more:hover .athlete-more-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.athlete-more-label {
+  padding: 6px 10px 4px;
+
+  color: var(--al-text-faint);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.athlete-more-menu a {
+  display: block;
+
+  padding: 10px 10px;
+
+  border-radius: 6px;
+
+  color: #9c9ca4;
+  font-size: 12.5px;
+
+  transition:
+    color var(--duration-fast, 150ms) ease,
+    background var(--duration-fast, 150ms) ease;
+}
+
+.athlete-more-menu a:hover {
+  color: var(--al-text);
+  background: rgba(255, 176, 32, 0.08);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+  .athlete-sidebar {
+    width: 224px;
+  }
+
+  .athlete-main {
+    width: calc(100% - 224px);
+    margin-left: 224px;
+  }
+
+  .athlete-topbar {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .athlete-layout {
+    display: block;
+  }
+
+  .athlete-sidebar {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    padding: 18px;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    box-shadow: none;
+  }
+
+  .athlete-logo {
+    margin-bottom: 16px;
+  }
+
+  .athlete-profile {
+    display: none;
+  }
+
+  .athlete-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    margin-top: 0;
+  }
+
+  .athlete-nav a {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+
+  .athlete-nav a:hover {
+    padding-left: 14px;
+  }
+
+  .athlete-nav a.active {
+    border-left-color: transparent;
+    box-shadow: inset 0 0 0 1px rgba(255, 176, 32, 0.35);
+  }
+
+  .athlete-sidebar-bottom {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 10px;
+    padding-top: 14px;
+  }
+
+  .athlete-sidebar-bottom a,
+  .athlete-sidebar-bottom button {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 12px;
+  }
+
+  .athlete-sidebar-bottom a:hover {
+    padding-left: 12px;
+  }
+
+  .athlete-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .athlete-topbar {
+    height: 58px;
+    padding: 0 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .athlete-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .athlete-topbar {
+    padding: 0 14px;
+  }
+}

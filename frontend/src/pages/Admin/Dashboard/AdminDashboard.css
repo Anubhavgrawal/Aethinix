@@ -1,0 +1,102 @@
+.admin-dashboard {
+  padding: 40px;
+}
+
+.admin-page-header {
+  margin-bottom: 32px;
+}
+
+.admin-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  opacity: 0.5;
+}
+
+.admin-page-header h1 {
+  margin: 8px 0;
+  font-size: 36px;
+}
+
+.admin-page-header p {
+  margin: 0;
+  opacity: 0.55;
+}
+
+.admin-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-stat-card,
+.admin-panel-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 14px;
+}
+
+.admin-stat-card {
+  padding: 24px;
+}
+
+.admin-stat-card span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.5;
+  margin-bottom: 14px;
+}
+
+.admin-stat-card strong {
+  font-size: 30px;
+}
+
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.admin-panel-card {
+  padding: 24px;
+}
+
+.admin-panel-card h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.admin-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-actions a {
+  color: inherit;
+  text-decoration: none;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.admin-status-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-status-row strong {
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .admin-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

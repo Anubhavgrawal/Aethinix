@@ -1,0 +1,809 @@
+.manage-tournament-page {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.manage-tournament-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.manage-back-link {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.manage-back-link:hover {
+  color: #fff;
+}
+
+.manage-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  opacity: 0.45;
+}
+
+.manage-tournament-header h1 {
+  margin: 0 0 8px;
+  font-size: 38px;
+  letter-spacing: -0.02em;
+}
+
+.manage-tournament-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.manage-status {
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.manage-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 50px;
+}
+
+.manage-card {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.manage-card span {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  opacity: 0.4;
+}
+
+.manage-card strong {
+  font-size: 15px;
+}
+
+.manage-section {
+  margin-bottom: 48px;
+}
+
+.manage-section-header {
+  margin-bottom: 20px;
+}
+
+.manage-section-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.manage-empty {
+  padding: 40px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.manage-empty h3 {
+  margin: 0 0 8px;
+}
+
+.manage-empty p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.manage-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.manage-category-card {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.manage-category-card > div:first-child span {
+  font-size: 11px;
+  opacity: 0.45;
+}
+
+.manage-category-card h3 {
+  margin: 7px 0 24px;
+  font-size: 20px;
+}
+
+.manage-category-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.manage-category-info div {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.manage-category-info small {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 9px;
+  opacity: 0.4;
+}
+
+.manage-category-info strong {
+  font-size: 13px;
+}
+
+.manage-operation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.manage-operation-card {
+  min-height: 150px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.manage-operation-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.manage-operation-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.manage-operation-card span {
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0.35;
+}
+
+@media (max-width: 1100px) {
+  .manage-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .manage-operation-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .manage-tournament-page {
+    padding: 24px;
+  }
+
+  .manage-tournament-header {
+    flex-direction: column;
+  }
+
+  .manage-tournament-header h1 {
+    font-size: 30px;
+  }
+
+  .manage-overview-grid,
+  .manage-category-grid,
+  .manage-operation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.manage-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.manage-add-category-button {
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.manage-add-category-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.manage-category-form {
+  margin-bottom: 20px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.manage-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.manage-form-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.manage-form-grid label {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.manage-form-grid input {
+  padding: 11px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  outline: none;
+}
+
+.manage-category-form > button {
+  margin-top: 20px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.manage-category-form > p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .manage-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manage-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.manage-publish-button {
+  margin-top: 12px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.manage-publish-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.manage-header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.manage-edit-button {
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.manage-edit-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.manage-edit-form {
+  margin-bottom: 32px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.manage-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.manage-edit-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.manage-edit-grid label {
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+.manage-edit-grid input,
+.manage-edit-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font: inherit;
+}
+
+.manage-edit-grid textarea {
+  resize: vertical;
+}
+
+.manage-edit-grid input:focus,
+.manage-edit-grid textarea:focus {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.manage-edit-full {
+  grid-column: 1 / -1;
+}
+
+.manage-save-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.manage-save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.manage-edit-message {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .manage-header-actions {
+    align-items: stretch;
+  }
+
+  .manage-edit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manage-edit-full {
+    grid-column: auto;
+  }
+
+  .manage-edit-form {
+    padding: 18px;
+  }
+}
+
+/* ================================
+   REGISTRATIONS
+================================ */
+
+.manage-registrations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.manage-registration-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.2fr) minmax(180px, 1.5fr) auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  box-sizing: border-box;
+}
+
+.manage-registration-main {
+  min-width: 0;
+}
+
+.manage-registration-player-id {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.45;
+}
+
+.manage-registration-main h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.manage-registration-main p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
+
+.manage-registration-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+}
+
+.manage-registration-contact span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.manage-registration-status {
+  white-space: nowrap;
+}
+
+.manage-registration-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.manage-registration-badge.pending {
+  border: 1px solid rgba(255, 193, 7, 0.25);
+  background: rgba(255, 193, 7, 0.08);
+  color: #e8c66a;
+}
+
+.manage-registration-badge.approved {
+  border: 1px solid rgba(80, 200, 120, 0.25);
+  background: rgba(80, 200, 120, 0.08);
+  color: #79d99b;
+}
+
+.manage-registration-badge.rejected {
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  background: rgba(255, 90, 90, 0.08);
+  color: #f28a8a;
+}
+
+.manage-registration-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.manage-approve-button,
+.manage-reject-button {
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.manage-approve-button {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #fff;
+  color: #000;
+}
+
+.manage-reject-button {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.manage-approve-button:hover {
+  opacity: 0.85;
+}
+
+.manage-reject-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.manage-approve-button:disabled,
+.manage-reject-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Registration count inside operation card */
+
+.manage-operation-card strong {
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+/* Registration responsive layout */
+
+@media (max-width: 1100px) {
+  .manage-registration-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .manage-registration-status {
+    justify-self: start;
+  }
+
+  .manage-registration-actions {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .manage-registration-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .manage-registration-contact {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .manage-registration-status,
+  .manage-registration-actions {
+    justify-self: start;
+  }
+
+  .manage-registration-actions {
+    width: 100%;
+  }
+
+  .manage-approve-button,
+  .manage-reject-button {
+    flex: 1;
+  }
+}
+
+/* =========================
+   FIXTURES
+========================= */
+
+.manage-fixture-generator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,.025);
+}
+
+.manage-fixture-generator h3 {
+  margin: 5px 0 7px;
+  font-size: 17px;
+}
+
+.manage-fixture-generator p {
+  margin: 0;
+  color: rgba(255,255,255,.45);
+  font-size: 12px;
+}
+
+.manage-fixture-generator-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 360px;
+}
+
+.manage-fixture-generator-controls select {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  font-size: 11px;
+}
+
+.manage-fixture-generator-controls select option {
+  background: #111;
+  color: #fff;
+}
+
+.manage-generate-fixture-button {
+  padding: 11px 15px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.manage-generate-fixture-button:hover {
+  opacity: .85;
+}
+
+.manage-generate-fixture-button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.manage-fixtures-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.manage-fixture-card {
+  display: grid;
+  grid-template-columns: 130px minmax(300px, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 22px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,.025);
+}
+
+.manage-fixture-number {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.manage-fixture-number span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  opacity: .4;
+}
+
+.manage-fixture-number strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.manage-fixture-players {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.manage-fixture-player {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.manage-fixture-player span {
+  font-size: 9px;
+  letter-spacing: .1em;
+  opacity: .4;
+}
+
+.manage-fixture-player strong {
+  font-size: 15px;
+}
+
+.manage-fixture-vs {
+  font-size: 9px;
+  font-weight: 700;
+  opacity: .35;
+}
+
+.manage-fixture-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.manage-fixture-meta > span:first-child {
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .manage-fixture-generator {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .manage-fixture-generator-controls {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .manage-fixture-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .manage-fixture-meta {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .manage-fixture-generator-controls {
+    flex-direction: column;
+  }
+
+  .manage-fixture-generator-controls select,
+  .manage-generate-fixture-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .manage-fixture-players {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .manage-fixture-vs {
+    display: none;
+  }
+}
+

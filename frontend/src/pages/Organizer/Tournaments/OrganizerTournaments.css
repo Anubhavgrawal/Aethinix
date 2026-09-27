@@ -1,0 +1,250 @@
+.organizer-tournaments-page {
+  padding: 42px 44px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.organizer-tournaments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.organizer-tournaments-eyebrow {
+  color: #d99a24;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.organizer-tournaments-header h1 {
+  margin-top: 9px;
+  font-size: 32px;
+  letter-spacing: -0.7px;
+}
+
+.organizer-tournaments-header p {
+  margin-top: 8px;
+  color: #777;
+  font-size: 13px;
+}
+
+.organizer-create-button {
+  padding: 12px 17px;
+  border-radius: 8px;
+  background: #d99a24;
+  color: #111;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+/* Toolbar */
+
+.organizer-tournament-toolbar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #292929;
+}
+
+.organizer-tournament-toolbar button {
+  padding: 8px 13px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #777;
+  font-size: 11px;
+}
+
+.organizer-tournament-toolbar button:hover {
+  color: #ccc;
+}
+
+.organizer-tournament-toolbar button.active {
+  border-color: #383838;
+  background: #1d1d1d;
+  color: #d99a24;
+}
+
+/* Cards */
+
+.organizer-tournament-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.organizer-tournament-card {
+  padding: 23px;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  background: #161616;
+}
+
+.organizer-tournament-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.organizer-tournament-sport {
+  color: #777;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.organizer-tournament-card h2 {
+  margin-top: 7px;
+  color: #e4e4e4;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.organizer-status {
+  height: fit-content;
+  padding: 5px 8px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #888;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+.organizer-status.upcoming {
+  color: #d99a24;
+}
+
+.organizer-status.ongoing {
+  color: #8dbb91;
+}
+
+.organizer-status.completed {
+  color: #777;
+}
+
+/* Info */
+
+.organizer-tournament-info {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.7fr;
+  gap: 12px;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid #252525;
+}
+
+.organizer-tournament-info span {
+  display: block;
+  color: #555;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.organizer-tournament-info strong {
+  display: block;
+  margin-top: 6px;
+  color: #aaa;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* Actions */
+
+.organizer-tournament-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.organizer-tournament-actions a {
+  color: #888;
+  font-size: 10px;
+}
+
+.organizer-tournament-actions a:last-child {
+  color: #d99a24;
+}
+
+.organizer-tournament-actions a:hover {
+  color: #fff;
+}
+
+/* Empty */
+
+.organizer-tournaments-empty {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #292929;
+  border-radius: 13px;
+  background: #161616;
+}
+
+.organizer-tournaments-empty .organizer-empty-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #333;
+  border-radius: 11px;
+  color: #d99a24;
+}
+
+.organizer-tournaments-empty h2 {
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.organizer-tournaments-empty p {
+  margin-top: 7px;
+  color: #666;
+  font-size: 11px;
+}
+
+.organizer-tournaments-empty a {
+  margin-top: 17px;
+  color: #d99a24;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 850px) {
+  .organizer-tournament-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .organizer-tournaments-page {
+    padding: 28px 18px 45px;
+  }
+
+  .organizer-tournaments-header {
+    flex-direction: column;
+  }
+
+  .organizer-create-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .organizer-tournament-toolbar {
+    overflow-x: auto;
+  }
+
+  .organizer-tournament-info {
+    grid-template-columns: 1fr;
+  }
+}

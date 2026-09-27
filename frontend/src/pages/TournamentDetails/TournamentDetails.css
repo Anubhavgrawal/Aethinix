@@ -1,0 +1,340 @@
+.tournament-details-page {
+  min-height: 100vh;
+  padding: 70px 0 100px;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(255, 176, 32, 0.06), transparent 30%),
+    #0d0f12;
+  color: #f5f5f2;
+}
+
+.tournament-details-container {
+  width: min(1100px, 88%);
+  margin: 0 auto;
+}
+
+.tournament-details-back {
+  display: inline-block;
+  margin-bottom: 45px;
+  color: #8d9399;
+  font-size: 12px;
+  transition: color 0.2s ease;
+}
+
+.tournament-details-back:hover {
+  color: #ffb020;
+}
+
+.tournament-details-header {
+  margin-bottom: 45px;
+}
+
+.tournament-details-header p,
+.tournament-details-section > p {
+  margin-bottom: 10px;
+  color: #7d8389;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.tournament-details-header h1 {
+  margin-bottom: 18px;
+  font-family: var(--font-display, "Oswald", sans-serif);
+  font-size: clamp(44px, 7vw, 78px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.tournament-details-header span {
+  color: #969ca2;
+  font-size: 14px;
+}
+
+.tournament-details-card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 28px;
+  border: 1px solid #30363c;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #171a1e;
+}
+
+.tournament-details-card > div {
+  padding: 25px 20px;
+  border-right: 1px solid #30363c;
+}
+
+.tournament-details-card > div:last-child {
+  border-right: none;
+}
+
+.tournament-details-card span,
+.registration-dates span {
+  display: block;
+  margin-bottom: 9px;
+  color: #777e84;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.tournament-details-card strong,
+.registration-dates strong {
+  color: #e7e7e8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tournament-details-section {
+  margin-top: 28px;
+  padding: 32px;
+  border: 1px solid #30363c;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #1b1e22, #15181b);
+}
+
+.tournament-details-section h2 {
+  margin-bottom: 25px;
+  color: #eeeeef;
+  font-family: var(--font-display, "Oswald", sans-serif);
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.registration-dates {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.registration-dates > div {
+  padding: 20px;
+  border: 1px solid #30363c;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.tournament-empty,
+.tournament-rules {
+  padding: 22px;
+  border: 1px solid #30363c;
+  border-radius: 10px;
+  color: #858b91;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 12px;
+  padding: 18px 20px;
+  border: 1px solid #30363c;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.category-card strong {
+  color: #e7e7e8;
+  font-size: 13px;
+}
+
+.category-card span {
+  color: #858b91;
+  font-size: 11px;
+}
+
+@media (max-width: 800px) {
+  .tournament-details-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tournament-details-card > div:nth-child(2n) {
+    border-right: none;
+  }
+
+  .tournament-details-card > div {
+    border-bottom: 1px solid #30363c;
+  }
+}
+
+@media (max-width: 550px) {
+  .tournament-details-container {
+    width: calc(100% - 30px);
+  }
+
+  .tournament-details-page {
+    padding: 45px 0 70px;
+  }
+
+  .tournament-details-card,
+  .registration-dates {
+    grid-template-columns: 1fr;
+  }
+
+  .tournament-details-card > div {
+    border-right: none;
+  }
+
+  .tournament-details-section {
+    padding: 24px;
+  }
+
+  .category-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.tournament-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.category-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.category-card-info strong {
+  font-size: 17px;
+}
+
+.category-card-info span {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.category-card-info small {
+  margin-top: 4px;
+  font-size: 11px;
+  opacity: 0.4;
+}
+
+.category-register-button {
+  flex-shrink: 0;
+  padding: 10px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.category-register-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.registration-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.registration-modal {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: #101010;
+  box-sizing: border-box;
+}
+
+.registration-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.registration-modal h2 {
+  margin: 8px 0 10px;
+  font-size: 25px;
+}
+
+.registration-modal > p {
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.registration-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.registration-summary div {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 9px;
+}
+
+.registration-summary span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  opacity: 0.4;
+}
+
+.registration-summary strong {
+  font-size: 13px;
+}
+
+.registration-continue-button {
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .category-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .category-register-button {
+    width: 100%;
+  }
+
+  .registration-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-modal {
+    padding: 25px;
+  }
+}

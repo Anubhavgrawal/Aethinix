@@ -1,0 +1,415 @@
+/* =========================
+   AETHENIX — PREMIUM UI
+========================= */
+
+nav {
+  height: 78px;
+  padding: 0 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1d1d1d;
+  background: #080808;
+  position: relative;
+  z-index: 10;
+}
+
+nav > a {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+nav > div {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+nav > div a {
+  color: #888;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav > div a:hover {
+  color: white;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+main {
+  width: 100%;
+}
+
+main > div {
+  width: 100%;
+}
+
+section {
+  width: 100%;
+  padding: 110px 8vw;
+  border-bottom: 1px solid #181818;
+}
+
+section > h2,
+section > p,
+section > div,
+section > a {
+  max-width: 1200px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+section:first-child {
+  min-height: calc(100vh - 78px);
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  background:
+    radial-gradient(circle at 80% 35%, #1b1b1b 0, transparent 32%),
+    #080808;
+}
+
+section:first-child > p:first-child {
+  margin-bottom: 25px;
+  color: #777;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+
+section:first-child h1 {
+  margin: 0 0 30px;
+  font-size: clamp(64px, 10vw, 150px);
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+  font-weight: 800;
+}
+
+section:first-child > p:nth-of-type(2) {
+  max-width: 620px;
+  margin-bottom: 38px;
+  color: #999;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+section:first-child > div {
+  display: flex;
+  gap: 12px;
+}
+
+section:first-child > div a {
+  padding: 15px 24px;
+  border: 1px solid #fff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+section:first-child > div a:first-child {
+  background: #fff;
+  color: #080808;
+}
+
+section:first-child > div a:first-child:hover {
+  background: #dcdcdc;
+}
+
+section:first-child > div a:last-child:hover {
+  background: #fff;
+  color: #080808;
+}
+
+/* =========================
+   SECTION HEADERS
+========================= */
+
+section:not(:first-child) h2 {
+  margin-bottom: 40px;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.045em;
+}
+
+/* =========================
+   TOURNAMENT
+========================= */
+
+section:nth-child(2) > div {
+  width: 100%;
+  min-height: 230px;
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid #292929;
+  background: linear-gradient(135deg, #111, #0a0a0a);
+}
+
+section:nth-child(2) > div p:first-child {
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+}
+
+section:nth-child(2) > div p {
+  margin-bottom: 10px;
+  color: #888;
+}
+
+section:nth-child(2) > div p:nth-child(3) {
+  color: #aaa;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+section:nth-child(2) > div a {
+  margin-top: 25px;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* =========================
+   RANKINGS
+========================= */
+
+section:nth-child(3) > div {
+  width: 100%;
+  padding: 0;
+  border-top: 1px solid #292929;
+}
+
+section:nth-child(3) > div p {
+  margin: 0;
+  padding: 20px 25px;
+  display: inline-block;
+  color: #aaa;
+  font-size: 14px;
+}
+
+section:nth-child(3) > div p:nth-child(odd) {
+  width: 65%;
+  color: white;
+  font-weight: 600;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+section:nth-child(3) > div p:nth-child(even) {
+  width: 35%;
+  text-align: right;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+section:nth-child(3) > a,
+section:nth-child(5) > a {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* =========================
+   ATHLETE SEARCH
+========================= */
+
+section:nth-child(4) {
+  text-align: center;
+}
+
+section:nth-child(4) h2,
+section:nth-child(4) > p,
+section:nth-child(4) > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section:nth-child(4) > p {
+  margin-bottom: 30px;
+  color: #777;
+}
+
+section:nth-child(4) > div {
+  display: flex;
+  justify-content: center;
+}
+
+section:nth-child(4) input {
+  width: min(600px, 70%);
+  height: 56px;
+  padding: 0 18px;
+  border: 1px solid #292929;
+  outline: none;
+  background: #101010;
+  color: white;
+}
+
+section:nth-child(4) input:focus {
+  border-color: #666;
+}
+
+section:nth-child(4) button {
+  height: 56px;
+  padding: 0 28px;
+  border: 1px solid white;
+  background: white;
+  color: #080808;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+section:nth-child(5) > div {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+
+  border: 1px solid #222;
+  background: #0d0d0d;
+}
+
+section:nth-child(5) > div p {
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+}
+
+section:nth-child(5) > div p:first-child {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+section:nth-child(5) > div p:nth-child(2) {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  padding: 65px 8vw 30px;
+  background: #050505;
+}
+
+footer > div:first-child a {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+footer > div:first-child p {
+  margin-top: 10px;
+  color: #666;
+  font-size: 13px;
+}
+
+footer > div:nth-child(2) {
+  display: flex;
+  gap: 25px;
+  margin: 40px 0;
+}
+
+footer > div:nth-child(2) a {
+  color: #777;
+  font-size: 12px;
+}
+
+footer > div:nth-child(2) a:hover {
+  color: white;
+}
+
+footer > p:last-child {
+  padding-top: 25px;
+  border-top: 1px solid #181818;
+  color: #444;
+  font-size: 11px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  nav {
+    height: auto;
+    padding: 20px 5vw;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  nav > div {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  section {
+    padding: 75px 5vw;
+  }
+
+  section:first-child {
+    min-height: 650px;
+  }
+
+  section:first-child h1 {
+    font-size: 60px;
+  }
+
+  section:first-child > div {
+    flex-wrap: wrap;
+  }
+
+  section:nth-child(3) > div p:nth-child(odd) {
+    width: 60%;
+  }
+
+  section:nth-child(3) > div p:nth-child(even) {
+    width: 40%;
+  }
+
+  section:nth-child(4) > div {
+    flex-direction: column;
+  }
+
+  section:nth-child(4) input {
+    width: 100%;
+  }
+
+  section:nth-child(4) button {
+    width: 100%;
+  }
+
+  section:nth-child(5) > div {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  footer > div:nth-child(2) {
+    flex-wrap: wrap;
+  }
+}
+

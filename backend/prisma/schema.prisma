@@ -1,0 +1,561 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  ATHLETE
+  ORGANIZER
+  SUPER_ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum TournamentStatus {
+  DRAFT
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum RegistrationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum FixtureStatus {
+  SCHEDULED
+  CALLED
+  IN_PROGRESS
+  COMPLETED
+  WALKOVER
+  RETIRED
+  CANCELLED
+  RESCHEDULED
+}
+
+model User {
+  id           String     @id @default(uuid())
+  name         String
+  email        String     @unique
+  phone        String?    @unique
+  passwordHash String
+  role         UserRole   @default(ATHLETE)
+  status       UserStatus @default(ACTIVE)
+
+  player    Player?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Player {
+  id                 String             @id @default(uuid())
+  userId             String             @unique
+  playerId           String             @unique
+  dateOfBirth        DateTime?
+  gender             String?
+  sport              String?
+  academy            String?
+  coach              String?
+  profilePhoto       String?
+  verificationStatus VerificationStatus @default(PENDING)
+
+  user          User           @relation(fields: [userId], references: [id])
+  registrations Registration[]
+
+  // Legacy fixture relations
+  fixturesAsPlayer1 Fixture[] @relation("FixturePlayer1")
+  fixturesAsPlayer2 Fixture[] @relation("FixturePlayer2")
+  fixturesWon       Fixture[] @relation("FixtureWinner")
+
+  // New fixture-engine relations
+  entries          TournamentEntry[]
+  doublesAsPlayer1 DoublesPair[] @relation("DoublesPlayer1")
+  doublesAsPlayer2 DoublesPair[] @relation("DoublesPlayer2")
+
+  // Player statistics
+  statistics PlayerStatistics?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PlayerStatistics {
+  id String @id @default(uuid())
+
+  playerId String @unique
+
+  matchesPlayed Int @default(0)
+  wins Int @default(0)
+  losses Int @default(0)
+
+  tournamentsEntered Int @default(0)
+  tournamentsCompleted Int @default(0)
+
+  titles Int @default(0)
+  finals Int @default(0)
+  semifinals Int @default(0)
+
+  rankingPoints Int @default(0)
+  currentRanking Int?
+  bestRanking Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  player Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([rankingPoints])
+  @@index([currentRanking])
+}
+
+model Tournament {
+  id                String           @id @default(uuid())
+  name              String
+  slug              String           @unique
+  sport             String
+  organizerId       String
+  venue             String?
+  location          String?
+  startDate         DateTime
+  endDate           DateTime
+  registrationOpen  DateTime?
+  registrationClose DateTime?
+  status            TournamentStatus @default(DRAFT)
+  description       String?
+  rules             String?
+  capacity          Int?
+
+  // Existing relations
+  categories    Category[]
+  registrations Registration[]
+  fixtures      Fixture[]
+
+  // New fixture-engine relations
+  tournamentRule   TournamentRule?
+  venues           Venue[]
+  events           Event[]
+  entries          TournamentEntry[]
+  draws            Draw[]
+  timeSlots        TimeSlot[]
+  matches          Match[]
+  conflicts        FixtureConflict[]
+  scheduleVersions ScheduleVersion[]
+  auditLogs        AuditLog[]
+  doublesPairs     DoublesPair[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id           String  @id @default(uuid())
+  tournamentId String
+  name         String
+  gender       String?
+  ageGroup     String?
+  eligibility  String?
+  capacity     Int?
+  fee          Decimal @db.Decimal(10, 2)
+
+  tournament    Tournament     @relation(fields: [tournamentId], references: [id])
+  registrations Registration[]
+  fixtures      Fixture[]
+
+  // New fixture-engine relations
+  events  Event[]
+  matches Match[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Registration {
+  id             String             @id @default(uuid())
+  registrationId String             @unique
+  tournamentId   String
+  categoryId     String
+  playerId       String
+  status         RegistrationStatus @default(PENDING)
+
+  player     Player     @relation(fields: [playerId], references: [id])
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  category   Category   @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([playerId, tournamentId, categoryId])
+}
+
+model Fixture {
+  id           String        @id @default(uuid())
+  tournamentId String
+  categoryId   String
+  round        String
+  matchNumber  Int
+  player1Id    String?
+  player2Id    String?
+  winnerId     String?
+  status       FixtureStatus @default(SCHEDULED)
+  scheduledAt  DateTime?
+  venue        String?
+  score        String?
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  category   Category   @relation(fields: [categoryId], references: [id])
+  player1    Player?    @relation("FixturePlayer1", fields: [player1Id], references: [id])
+  player2    Player?    @relation("FixturePlayer2", fields: [player2Id], references: [id])
+  winner     Player?    @relation("FixtureWinner", fields: [winnerId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([tournamentId, categoryId, matchNumber])
+}
+
+// ============================================================
+// AETHENIX BADMINTON FIXTURE ENGINE
+// ============================================================
+
+model TournamentRule {
+  id                   String  @id @default(uuid())
+  tournamentId         String  @unique
+  matchDurationMin     Int     @default(30)
+  courtTurnaroundMin   Int     @default(5)
+  operationalBufferMin Int     @default(5)
+  minimumRestMin       Int     @default(30)
+  operatingStartTime   String
+  operatingEndTime     String
+  format               String  @default("KNOCKOUT")
+  ageCutoffRule        String?
+  tiebreakRules        String?
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Venue {
+  id           String  @id @default(uuid())
+  tournamentId String
+  name         String
+  address      String?
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  courts     Court[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Court {
+  id      String  @id @default(uuid())
+  venueId String
+  name    String
+  number  Int
+  active  Boolean @default(true)
+
+  venue   Venue   @relation(fields: [venueId], references: [id])
+  matches Match[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([venueId, number])
+}
+
+model Event {
+  id           String @id @default(uuid())
+  tournamentId String
+  categoryId   String
+  name         String
+  code         String
+  eventType    String
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  category   Category   @relation(fields: [categoryId], references: [id])
+
+  entries TournamentEntry[]
+  pairs   DoublesPair[]
+  draws   Draw[]
+  matches Match[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([categoryId, code])
+  @@index([tournamentId])
+  @@index([categoryId])
+}
+
+model TournamentEntry {
+  id               String   @id @default(uuid())
+  tournamentId     String
+  eventId          String
+  playerId         String
+  rankingPoints    Decimal? @db.Decimal(10, 2)
+  seed             Int?
+  withdrawn        Boolean  @default(false)
+  validationStatus String   @default("PENDING")
+  validationError  String?
+  frozen           Boolean  @default(false)
+
+  tournament Tournament   @relation(fields: [tournamentId], references: [id])
+  event      Event        @relation(fields: [eventId], references: [id])
+  player     Player       @relation(fields: [playerId], references: [id])
+  pair       DoublesPair?
+
+  drawPositions DrawPosition[]
+  matchesAsA    Match[]        @relation("MatchPlayerA")
+  matchesAsB    Match[]        @relation("MatchPlayerB")
+  matchesWon    Match[]        @relation("MatchWinner")
+  matchesLost   Match[]        @relation("MatchLoser")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([tournamentId, eventId, playerId])
+  @@index([tournamentId])
+  @@index([playerId])
+  @@index([eventId])
+}
+
+model DoublesPair {
+  id              String   @id @default(uuid())
+  pairId          String   @unique
+  tournamentId    String
+  eventId         String
+  player1Id       String
+  player2Id       String
+  combinedRanking Decimal? @db.Decimal(10, 2)
+  seed            Int?
+  entryId         String   @unique
+
+  tournament Tournament      @relation(fields: [tournamentId], references: [id])
+  event      Event           @relation(fields: [eventId], references: [id])
+  player1    Player          @relation("DoublesPlayer1", fields: [player1Id], references: [id])
+  player2    Player          @relation("DoublesPlayer2", fields: [player2Id], references: [id])
+  entry      TournamentEntry @relation(fields: [entryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Draw {
+  id                String    @id @default(uuid())
+  tournamentId      String
+  eventId           String
+  version           Int       @default(1)
+  status            String    @default("DRAFT")
+  bracketSize       Int?
+  byeCount          Int?
+  totalMatches      Int?
+  randomizationSeed String?
+  generatedAt       DateTime?
+  approvedAt        DateTime?
+  publishedAt       DateTime?
+  lockedAt          DateTime?
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  event      Event      @relation(fields: [eventId], references: [id])
+
+  positions        DrawPosition[]
+  rounds           Round[]
+  matches          Match[]
+  scheduleVersions ScheduleVersion[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tournamentId])
+  @@index([eventId])
+}
+
+model DrawPosition {
+  id       String  @id @default(uuid())
+  drawId   String
+  entryId  String?
+  position Int
+  seed     Int?
+  bye      Boolean @default(false)
+
+  draw  Draw             @relation(fields: [drawId], references: [id])
+  entry TournamentEntry? @relation(fields: [entryId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([drawId, position])
+}
+
+model Round {
+  id          String @id @default(uuid())
+  drawId      String
+  roundNumber Int
+  name        String
+
+  draw    Draw    @relation(fields: [drawId], references: [id])
+  matches Match[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([drawId, roundNumber])
+}
+
+model TimeSlot {
+  id             String   @id @default(uuid())
+  tournamentId   String
+  scheduledStart DateTime
+  scheduledEnd   DateTime
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  matches    Match[]
+
+  createdAt DateTime @default(now())
+
+  @@index([tournamentId])
+  @@index([scheduledStart])
+}
+
+model Match {
+  id             String  @id @default(uuid())
+  matchId        String  @unique
+  tournamentId   String
+  categoryId     String
+  eventId        String
+  drawId         String
+  roundId        String
+  matchNumber    Int
+  roundName      String
+  playerAEntryId String?
+  playerBEntryId String?
+  courtId        String?
+  timeSlotId     String?
+  status         String  @default("SCHEDULED")
+  winnerEntryId  String?
+  loserEntryId   String?
+  nextMatchId    String?
+  nextMatchSlot  String?
+  version        Int     @default(1)
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  category   Category   @relation(fields: [categoryId], references: [id])
+  event      Event      @relation(fields: [eventId], references: [id])
+  draw       Draw       @relation(fields: [drawId], references: [id])
+  round      Round      @relation(fields: [roundId], references: [id])
+
+  playerA TournamentEntry? @relation("MatchPlayerA", fields: [playerAEntryId], references: [id])
+  playerB TournamentEntry? @relation("MatchPlayerB", fields: [playerBEntryId], references: [id])
+  winner  TournamentEntry? @relation("MatchWinner", fields: [winnerEntryId], references: [id])
+  loser   TournamentEntry? @relation("MatchLoser", fields: [loserEntryId], references: [id])
+
+  court     Court?            @relation(fields: [courtId], references: [id])
+  timeSlot  TimeSlot?         @relation(fields: [timeSlotId], references: [id])
+  result    MatchResult?
+  conflicts FixtureConflict[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([tournamentId, eventId, roundId, matchNumber])
+  @@index([tournamentId])
+  @@index([categoryId])
+  @@index([eventId])
+  @@index([courtId])
+  @@index([timeSlotId])
+  @@index([status])
+}
+
+model MatchResult {
+  id               String    @id @default(uuid())
+  matchId          String    @unique
+  winnerEntryId    String
+  loserEntryId     String?
+  score            String?
+  status           String
+  walkoverReason   String?
+  retiringPlayerId String?
+  retirementReason String?
+  noShowReason     String?
+  authorizedBy     String?
+  confirmedAt      DateTime?
+
+  match Match @relation(fields: [matchId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FixtureConflict {
+  id           String  @id @default(uuid())
+  tournamentId String
+  matchId      String
+  type         String
+  message      String
+  severity     String  @default("ERROR")
+  resolved     Boolean @default(false)
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  match      Match      @relation(fields: [matchId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tournamentId])
+  @@index([matchId])
+}
+
+model ScheduleVersion {
+  id           String    @id @default(uuid())
+  tournamentId String
+  drawId       String
+  version      Int
+  status       String
+  changeReason String?
+  createdBy    String
+  approvedBy   String?
+  publishedAt  DateTime?
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id])
+  draw       Draw       @relation(fields: [drawId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([drawId, version])
+}
+
+model AuditLog {
+  id           String  @id @default(uuid())
+  tournamentId String?
+  entityType   String
+  entityId     String
+  action       String
+  reason       String?
+  userId       String
+  metadata     String?
+
+  tournament Tournament? @relation(fields: [tournamentId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([tournamentId])
+  @@index([entityType, entityId])
+  @@index([userId])
+}
